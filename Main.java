@@ -1,8 +1,18 @@
-public class Main {
+import java.io.IOException;
+import java.util.List;
 
+public class Main {
     public static void main(String[] args) {
-        // Teste de leitura dos arquivos
-        ProcessadorTexto.lerArquivo("texto.txt");
-        ProcessadorTexto.lerArquivo("palavras_chave.txt");
+        String caminhoArquivo = "texto.txt"; //caminho do arquivo
+
+        try {
+            List<String> linhas = ProcessadorTexto.lerArquivo(caminhoArquivo);
+            System.out.println("Conteúdo do arquivo " + caminhoArquivo + ":");
+            for (String linha : linhas) {
+                System.out.println(linha);
+            }
+        } catch (IOException e) {
+            System.err.println("Erro ao ler o arquivo " + caminhoArquivo + ": " + e.getMessage());
+        }
     }
 }
